@@ -18,7 +18,7 @@ func (*TaskRepository) TableName() string {
 func (repo *TaskRepository) List() ([]dao.Task, error) {
 	var tasks = []dao.Task{}
 
-	err := repo.db.Get(&tasks, fmt.Sprintf(`
+	err := repo.db.Select(&tasks, fmt.Sprintf(`
 		SELECT id, type, host FROM %s`, repo.TableName()))
 	return tasks, err
 }
@@ -26,8 +26,8 @@ func (repo *TaskRepository) List() ([]dao.Task, error) {
 func (repo *TaskRepository) Read(id string) (dao.Task, error) {
 	var task = dao.Task{}
 
-	err := repo.db.Get(task, fmt.Sprintf(
-		"SELECT id, type, host FROM %s WHERE name=$1", repo.TableName()),
+	err := repo.db.Get(&task, fmt.Sprintf(
+		"SELECT id, type, host FROM %s WHERE id=$1", repo.TableName()),
 		id)
 	return task, err
 }
