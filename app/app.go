@@ -83,11 +83,15 @@ func (h HttpServer) ListTasksHandler(w http.ResponseWriter, r *http.Request) {
 func (h HttpServer) CheckTaskHandler(w http.ResponseWriter, r *http.Request) {
 	taskID := mux.Vars(r)["task-id"]
 
+	_ = taskID
+
 	w.WriteHeader(http.StatusOK)
 }
 
 func (h HttpServer) StartTaskHandler(w http.ResponseWriter, r *http.Request) {
 	taskID := mux.Vars(r)["task-id"]
+
+	_ = taskID
 
 	w.WriteHeader(http.StatusOK)
 
@@ -95,6 +99,8 @@ func (h HttpServer) StartTaskHandler(w http.ResponseWriter, r *http.Request) {
 
 func (h HttpServer) CancelTaskHandler(w http.ResponseWriter, r *http.Request) {
 	taskID := mux.Vars(r)["task-id"]
+
+	_ = taskID
 
 	w.WriteHeader(http.StatusOK)
 }
