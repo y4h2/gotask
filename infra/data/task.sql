@@ -1,0 +1,13 @@
+
+BEGIN;
+
+CREATE SCHEMA IF NOT EXISTS "gotask";
+
+DROP TABLE IF EXISTS "gotask"."task";
+CREATE TABLE "gotask"."task" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "type" TEXT NOT NULL,
+  "host" TEXT NOT NULL
+);
+
+COMMIT;
